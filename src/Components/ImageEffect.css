@@ -1,0 +1,43 @@
+.ImageEffectContainer{
+    position: relative;
+    height: 160px;
+}
+.ImageEffect {
+    border-radius: 5px;
+    width: fit-content;  
+    margin-left: 45px; 
+}
+.ImageEffect .resizeable {
+    top:0px;
+    position: absolute;
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    min-width: 0%;
+    border-radius: 12px 0px 0px 12px;
+}
+.ImageEffectContainer .resizerElement{
+    background-color: white;
+    height: 57px;
+    width: 4px;
+    border-radius: 2px;
+    align-self: center;
+    justify-self: center;
+}
+  
+.ImageEffectContainer .resizer {
+    position: absolute;
+    cursor: col-resize;
+    height: 100%;
+    top:0px;
+    display: flex;
+    min-width: max-content;
+}
+.ImageEffect .childImage{
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}

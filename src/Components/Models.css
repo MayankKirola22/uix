@@ -1,0 +1,177 @@
+#Models{
+    background-color: #26252A;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    border-radius: 12px;
+    padding: 5px;
+    --Color:black;
+}
+#Models .header{
+    height: 162px;
+    background-color: #201F23;
+    padding: 20px;
+    border-radius: 12px;
+}
+#Models .heading{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 15px;
+}
+#Models .option{
+    display: flex;
+    align-items: center;
+    background-color: #17171A;
+    border-radius: 50px;
+    padding: 10px 15px;
+    justify-items: center;
+    margin-right: 10px;
+}
+#Models .options{
+    display: flex;
+    font-size: 13px;
+    margin: 0px 10px;
+}
+#Models .down{
+    height: 13px;
+    width: 13px;
+    margin-left: 10px;
+}
+#Models .fieldNames{
+    margin: 10px;
+    display: flex;
+    font-size: 12px;
+    opacity: 0.6;
+}
+#Models .fieldName:nth-of-type(1){
+    width: 30%;
+}
+#Models .fieldName{
+    width: 20%;
+}
+#Models .fieldName:nth-of-type(4){
+    width: 25%;
+}
+#Models .content{
+    overflow: scroll;
+    height: calc(100% - 161px);
+}
+#Models .model{
+    display: flex;
+    font-size: 14px;
+    padding: 20px 10px;
+}
+#Models .modelInfo{
+    width: 20%;
+}
+#Models .modelInfo:nth-of-type(1){
+    width: 25%;
+    padding: 0px 10px;
+}
+#Models .modelInfo:nth-of-type(2){
+    width: 17%;
+    opacity: 0.6;
+    justify-content: center;
+}
+#Models .modelInfo:nth-of-type(3){
+    width: 15%;
+    opacity: 0.6;
+    justify-content: center;
+}
+#Models .modelInfo:nth-of-type(4){
+    width: 15%;
+    padding: 0px 5px;
+}
+#Models .modelInfo:nth-of-type(5){
+    width: 25%;
+    justify-content: center;
+
+}
+#Models .popCheckboxAll:checked{
+    background: url("../resources/minus.png") !important;
+    background-color: var(--Color) !important;
+    background-size: contain !important;
+}
+#Models .model .contributorImg{
+    border: 2px white solid;
+    height: 24px;
+    width: 24px;
+    border-radius: 12px;
+    margin: 0px -5px;
+}
+#Models .model .logo{
+    height: 24px;
+    min-width: 24px;
+    border-radius: 20px;
+    overflow: hidden;
+    object-fit: cover;
+    background-color: #D9D9D9;
+    margin: 0px 10px;
+}
+#Models .model .logoImg{
+    object-fit: cover;
+    height: 24px;
+    width: 24px;
+}
+#Models .model .modelInfo{
+    display:flex;
+}
+#Models .model .star{
+    height: 20px;
+    width: 20px;
+}
+#Models #popup{
+    background-color: #17171A;
+    position: absolute;
+    opacity: 1;
+    z-index: 1;
+    width: 200px;
+    border-radius: 6px;
+    margin: 5px;
+    padding: 5px;
+    transition-duration: 0.2s;
+}
+#Models .popOption{
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    border-radius: 5px;
+    transition-duration: 0.2s;
+    color:rgba(255,255,255,60%);
+    gap:0px;
+}
+#Models .popCheckbox{
+    appearance: none;
+    background-color: white;
+    height: 16px;
+    width: 16px;
+    border: 1px solid white;
+    border-radius: 6px;
+    margin-right: 10px;
+    transition-duration: 0.2s;
+}
+#Models .popCheckbox:checked{
+    background:url("../resources/Checked.png");
+    background-size: contain;
+    background-color: var(--Color);
+    border: none;
+}
+#Models .popOption:hover{
+    background-color: #26252A;
+    gap:5px;
+}
+#Models #modelExt{
+    overflow: hidden;
+    background-color: #17171A;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 500ms ease-in-out;
+}
+#Models .modelExt{
+    overflow: hidden;
+    padding: 0px;
+    color:rgba(255,255,255,60%);
+    font-size: 14px;
+    background-color: #17171A;
+    transition: all 500ms ease-in-out;
+}

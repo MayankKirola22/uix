@@ -1,0 +1,14 @@
+.ColorShades{
+    display: flex;
+    padding: 16px;
+    height: 48px;
+    background-color: #26252A;
+    width: 956px;
+    border-radius: 35.5px;
+}
+.ColorShades .shade{
+    width: 88px;
+    height: 16px;
+    border-radius: 50px;
+    margin: 0px 2.5px;
+}

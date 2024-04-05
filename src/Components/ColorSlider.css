@@ -1,0 +1,21 @@
+
+#colorSlider{
+    --SliderColor: hsl(239, 97%, 58%);
+    appearance: none;
+    border-radius: 50px;
+    border:16px solid #26252A;
+    width: 302px;
+    height: 48px;
+    background: linear-gradient(to right, rgb(255,0,0), rgb(255,255,0), rgb(0,255,0),rgb(0,255,255),rgb(0,0,255),rgb(255,0,255),rgb(255,0,0));
+}
+#colorSlider::-webkit-slider-thumb{
+  border: solid 4px white;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: var(--SliderColor);
+}
+
+

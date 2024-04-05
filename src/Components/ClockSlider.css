@@ -1,0 +1,102 @@
+.ClockSlider{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+}
+.ClockSlider .clockbg{
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+.ClockSlider .gradient{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+.ClockSlider .arrowDown{
+    position: absolute;
+    bottom: 45%;
+}
+.ClockSlider .clockSlider{
+    position: absolute;
+    width: 140px;
+    z-index: 1;
+    top:180px;
+   
+}
+.ClockSlider .clock{
+    position: absolute;
+    bottom: 0px;
+    user-select: none;
+    border-radius: 100px;
+    transition: all 500ms ease;
+}
+.ClockSlider .clockFrame{
+    height: 140px;
+    width: 140px;
+}
+.ClockSlider .clock:active{
+    bottom: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.ClockSlider .middle{
+    position: absolute;
+    border-radius: 10px;
+    left: calc(50% - 3.5px);
+    top: calc(50% - 3.5px);
+    width: 7px;
+    height: 7px;
+}
+.ClockSlider .hands{
+    position: absolute;
+    left: 50%;
+    background-color: black;
+}
+.ClockSlider .handDiv{
+    display: flex;
+    align-items: center;
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 0px;
+}
+.ClockSlider #minuteDiv{
+    transform: rotate(45deg);
+}
+.ClockSlider #minuteHand{
+    width: 42px;
+    height: 1.5px;
+}
+.ClockSlider #hourDiv{
+    transform: rotate(90deg);
+}
+.ClockSlider #hourHand{
+    width: 31px;
+    height: 2px;
+}
+.ClockSlider #secondDiv{
+    transform: rotate(180deg);
+}
+.ClockSlider #secondHand{
+    left: calc(44%);
+    width: 50px;
+    height: 1px;
+}
+.ClockSlider .clockPos{
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    border: dashed 1px;
+    position: absolute;
+    bottom: 60px;
+}
+.ClockSlider .time{
+    top:35%;
+    position: absolute;
+    font-size: 45px;
+    color: white;
+}

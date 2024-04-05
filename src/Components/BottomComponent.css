@@ -1,0 +1,143 @@
+#BottomComponent{
+    width: 1240px;
+    height: 100%;
+    background-color: #26252A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    --color:white;
+    --activeButtonColor:white;
+}
+#BottomComponent .modelContainer{
+    position: relative;
+    align-self: start;
+    height: 90%;
+}
+#BottomComponent .model{
+    align-self: start;
+    margin-top: 30px;
+    width: 379px;
+    background-color: #201F23;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 16px;
+}
+#BottomComponent .down{
+    height: 20px;
+    width: 20px;
+}
+#BottomComponent .popOption{
+    display: flex;
+    justify-content: start;
+    text-align: left;
+    font-size: 14px;
+    color:rgba(255,255,255,0.6);
+    padding: 5px 20px;
+}
+#BottomComponent .popup{
+    background-color: #17171A;
+    margin-top: 5px;
+    border-radius: 6px;
+    padding: 10px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    z-index: 5;
+}
+#BottomComponent .popCheckbox:checked{
+    background:url("../resources/Checked.png");
+    background-size: contain;
+    background-color: var(--Color);
+    border: none;
+}
+#BottomComponent .popCheckboxAll:checked{
+    background: url("../resources/minus.png");
+    background-color: var(--Color);
+    background-size: contain;
+}
+#BottomComponent .popCheckbox{
+    appearance: none;
+    background-color: white;
+    height: 16px;
+    width: 16px;
+    border: 1px solid white;
+    border-radius: 6px;
+    margin-right: 10px;
+    transition-duration: 0.2s;
+}
+#BottomComponent .help{
+    height: 64px;
+    width: 64px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 0;
+    transition:opacity 0.2s ease;
+    transition-delay: 0.2s;
+}
+
+#BottomComponent .helpImg{
+    height:24px;
+    width: 24px;
+}
+#BottomComponent .helpFloat{
+    background-color: rgb(23,23,26);
+    padding: 20px;
+    position: absolute;
+    border-radius: 12px;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+}
+#BottomComponent .input{
+    background-color: #201F23;
+    border-radius: 8px;
+    width: 718px;
+    height: 135px;
+    margin: 15px 0px;
+    overflow: scroll;
+    text-wrap: wrap;
+    resize: none;
+    padding: 10px;
+    font-size: 16px;
+}
+#BottomComponent .input:focus{
+    outline: none;
+}
+#BottomComponent .button{
+    width: 137px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+}
+#BottomComponent .button:active{
+    background: var(--activeButtonColor) !important;
+    transition: all 0.5s ease;
+}
+#BottomComponent .switcher{
+    padding: 6px;
+    background-color: #201F23;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+}
+#BottomComponent .switch{
+    border-radius: 8px;
+    width: 112px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
