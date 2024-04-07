@@ -20,10 +20,14 @@ export default function ClockSlider({color,Height,displayHeight}){
         let height = parseInt(styles.height, 10);
         let y = 0;
 
+        if(height>(Height-238)){
+          height=Height-238;
+          resizeableEle.style.height = `${height}px`;
+        }
+
         // Mouse Events
         
         const onMouseMoveHeightResize = (event) => {
-          console.log(event.clientY)
           const dy = event.clientY - y;
           y = event.clientY;
           height = height + dy;
@@ -38,12 +42,23 @@ export default function ClockSlider({color,Height,displayHeight}){
           }
         };
         const onMouseUpHeightResize = () => {
+
+          if(height>Height-350){
+            height=Height-238;
+            resizeableEle.style.transition="all 1s ease-in-out";
+            resizeableEle.style.height=`${height}px`
+          }
+          if(height<100){
+            height=0;
+            resizeableEle.style.transition="all 1s ease-in-out";
+            resizeableEle.style.height=`${height}px`
+          }
           document.removeEventListener("mousemove", onMouseMoveHeightResize);
         };
         const onMouseDownHeightResize = (event) => {
-          console.log(event);
           y = event.clientY;
           resizeableEle.style.top = styles.top;
+          resizeableEle.style.transition="all 0s";
           resizeableEle.style.bottom = null;
           document.addEventListener("mousemove", onMouseMoveHeightResize);
           document.addEventListener("mouseup", onMouseUpHeightResize);
@@ -66,6 +81,16 @@ export default function ClockSlider({color,Height,displayHeight}){
           }
         };
         const onTouchEndHeightResize = () => {
+          if(height>Height-350){
+            height=Height-238;
+            resizeableEle.style.transition="all 1s ease-in-out";
+            resizeableEle.style.height=`${height}px`
+          }
+          if(height<100){
+            height=0;
+            resizeableEle.style.transition="all 1s ease-in-out";
+            resizeableEle.style.height=`${height}px`
+          }
           document.removeEventListener("touchmove", onTouchMoveHeightResize);
         };
         const onTouchStartHeightResize = (event) => {
@@ -73,6 +98,7 @@ export default function ClockSlider({color,Height,displayHeight}){
           y = event.touches[0].clientY;
           resizeableEle.style.top = styles.top;
           resizeableEle.style.bottom = null;
+          resizeableEle.style.transition="all 0s";
           document.addEventListener("touchmove", onTouchMoveHeightResize);
           document.addEventListener("touchend", onTouchEndHeightResize);
         };

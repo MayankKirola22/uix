@@ -245,8 +245,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
       resizerV2.removeEventListener("touchstart", onTouchStartRightResize2);
       resizerH1.removeEventListener("touchstart", onTouchStartHeightResize);
     };
-  }, []);
-
+  }, [displayHeight]);
 
     return(
         <div id="Home">
