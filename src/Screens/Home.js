@@ -45,7 +45,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 1 & col - div 2
     
     const onMouseMoveRightResize1 = (event) => {
-      const dx = event.clientX - x;
+      const dx = (event.clientX - x)*(displayWidth/1400);
       x = event.clientX;
       cd1Width = cd1Width + dx;
       
@@ -75,7 +75,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 2 & col - div 3
     
     const onMouseMoveRightResize2 = (event) => {
-        const dx = event.clientX - x;
+        const dx = (event.clientX - x)*(displayWidth/1400);
         x = event.clientX;
         cd3Width = cd3Width - dx;
           if(cd3Width<300){
@@ -106,7 +106,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Down Resize 
 
     const onMouseMoveHeightResize = (event) => {
-        const dy = event.clientY - y;
+        const dy = (event.clientY - y)*(displayWidth/1400);
         y = event.clientY;
         rd1Height = rd1Height + dy;
           if(rd1Height<500){
@@ -137,7 +137,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 1 & col - div 2
 
     const onTouchMoveRightResize1 = (event) => {
-      const dx = (event.touches[0].clientX - x)*(displayHeight/200);
+      const dx = (event.touches[0].clientX - x)*(displayWidth/120);
       x = event.touches[0].clientX;
       cd1Width = cd1Width + dx;
       
@@ -167,7 +167,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 2 & col - div 3
     
     const onTouchMoveRightResize2 = (event) => {
-        const dx = (event.touches[0].clientX - x)*(displayHeight/200);
+        const dx = (event.touches[0].clientX - x)*(displayWidth/120);
         x = event.touches[0].clientX;
         cd3Width = cd3Width - dx;
           if(cd3Width<300){
@@ -198,7 +198,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Down Resize 
 
     const onTouchMoveHeightResize = (event) => {
-        const dy = (event.touches[0].clientY - y)*(displayHeight/200);
+        const dy = (event.touches[0].clientY - y)*(displayWidth/120);
         y = event.touches[0].clientY;
         rd1Height = rd1Height + dy;
           if(rd1Height<500){
@@ -246,7 +246,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
       resizerV2.removeEventListener("touchstart", onTouchStartRightResize2);
       resizerH1.removeEventListener("touchstart", onTouchStartHeightResize);
     };
-  }, [displayHeight]);
+  }, [displayWidth]);
 
     return(
         <div id="Home">
@@ -260,10 +260,10 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
                     <div ref={refSplit1} className="verticalSpliterDiv spliterDiv" id='vsd1' style={{cursor:Cd1Width===300?"e-resize":Cd1Width===400?"w-resize":"ew-resize"}}><div className="spliterIcon"/></div>
                     <div id="cd2" ref={refCd2} className="colDiv innerDiv"><Models color={color}/></div>
                     <div ref={refSplit2} className="verticalSpliterDiv spliterDiv" id="vsd2" style={{cursor:Cd3Width===300?"w-resize":Cd3Width===400?"e-resize":"ew-resize"}}><div className="spliterIcon"/></div>
-                    <div id="cd3" ref={refCd3} className="colDiv innerDiv" ><ClockSlider displayHeight={displayHeight} color={color} Height={Rd1Height}/></div>
+                    <div id="cd3" ref={refCd3} className="colDiv innerDiv" ><ClockSlider displayWidth={displayWidth} color={color} Height={Rd1Height}/></div>
                 </div>
                 <div ref={refSplit3} className="horizontalSpliterDiv spliterDiv" id="hsd" style={{cursor:Rd1Height===500?"s-resize":Rd1Height===600?"n-resize":"ns-resize"}}><div className="spliterIcon"/></div>
-                <div ref={refRd2} id="rd2" className="rowDiv innerDiv" ><BottomComponent displayHeight={displayHeight} color={color}/></div>
+                <div ref={refRd2} id="rd2" className="rowDiv innerDiv" ><BottomComponent displayWidth={displayWidth} color={color}/></div>
             </div>
         </div>
     )

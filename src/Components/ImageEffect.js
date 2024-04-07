@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import image from "../resources/image.png";
 import "./ImageEffect.css";
 
-export default function ImageEffect({color,displayHeight}) {
+export default function ImageEffect({color,displayWidth}) {
   const ref = useRef(null);
   const refRight = useRef(null);
 
@@ -16,9 +16,8 @@ export default function ImageEffect({color,displayHeight}) {
     const styles = window.getComputedStyle(resizeableEle);
     
     // Mouse Events
-
     const onMouseMoveRightResize = (event) => {
-      const dx = event.clientX - x;
+      const dx = (event.clientX - x)*(displayWidth/1400);
       x = event.clientX;
       width = width + dx;
       if(width<0){
@@ -42,11 +41,11 @@ export default function ImageEffect({color,displayHeight}) {
       document.addEventListener("mousemove", onMouseMoveRightResize);
       document.addEventListener("mouseup", onMouseUpRightResize);
     };
-    
+
     // Touch Events
 
     const onTouchMoveRightResize = (event) => {
-      const dx = (event.touches[0].clientX - x)*(displayHeight/200);
+      const dx = (event.touches[0].clientX - x)*(displayWidth/120);
       x = event.touches[0].clientX;
       width = width + dx;
       if(width<0){
@@ -76,13 +75,14 @@ export default function ImageEffect({color,displayHeight}) {
       resizerRight.removeEventListener("mousedown", onMouseDownRightResize);
       resizerRight.removeEventListener("touchstart", onTouchStartRightResize);
     };
-  }, [displayHeight]);
+  }, [displayWidth]);
 
   return (
-    <div className="ImageEffectContainer">
+    <div className="ImageEffectContainer" draggable={false}>
         <div className="ImageEffect">
             <img src={image} alt="childImage" draggable={false} className="childImage"/>
-            <div ref={ref} className="resizeable" style={{backgroundColor:`hsla(${color[0]},${color[1]}%,${color[2]}%,38%)`}}/>
+            <div ref={ref} className="resizeable" style={{backgroundColor:`hsla(${color[0]},${color[1]}%,${color[2]}%,38%)`}}>
+            </div>
         </div>
         <div ref={refRight} className="resizer resizer-r"><div className="resizerElement"/></div>
     </div>
