@@ -45,7 +45,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 1 & col - div 2
     
     const onMouseMoveRightResize1 = (event) => {
-      const dx = (event.clientX - x)*(displayWidth/1400);
+      const dx = (event.clientX - x)*(1500/displayWidth);
       x = event.clientX;
       cd1Width = cd1Width + dx;
       
@@ -75,7 +75,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 2 & col - div 3
     
     const onMouseMoveRightResize2 = (event) => {
-        const dx = (event.clientX - x)*(displayWidth/1400);
+        const dx = (event.clientX - x)*(1500/displayWidth);
         x = event.clientX;
         cd3Width = cd3Width - dx;
           if(cd3Width<300){
@@ -106,7 +106,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Down Resize 
 
     const onMouseMoveHeightResize = (event) => {
-        const dy = (event.clientY - y)*(displayWidth/1400);
+        const dy = (event.clientY - y)*(1500/displayWidth);
         y = event.clientY;
         rd1Height = rd1Height + dy;
           if(rd1Height<500){
@@ -137,7 +137,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 1 & col - div 2
 
     const onTouchMoveRightResize1 = (event) => {
-      const dx = (event.touches[0].clientX - x)*(displayWidth/120);
+      const dx = (event.touches[0].clientX - x)*(1500/displayWidth);
       x = event.touches[0].clientX;
       cd1Width = cd1Width + dx;
       
@@ -167,7 +167,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Right resize col - div 2 & col - div 3
     
     const onTouchMoveRightResize2 = (event) => {
-        const dx = (event.touches[0].clientX - x)*(displayWidth/120);
+        const dx = (event.touches[0].clientX - x)*(1500/displayWidth);
         x = event.touches[0].clientX;
         cd3Width = cd3Width - dx;
           if(cd3Width<300){
@@ -198,7 +198,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     // Down Resize 
 
     const onTouchMoveHeightResize = (event) => {
-        const dy = (event.touches[0].clientY - y)*(displayWidth/120);
+        const dy = (event.touches[0].clientY - y)*(1500/displayWidth);
         y = event.touches[0].clientY;
         rd1Height = rd1Height + dy;
           if(rd1Height<500){

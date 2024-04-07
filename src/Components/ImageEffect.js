@@ -17,7 +17,7 @@ export default function ImageEffect({color,displayWidth}) {
     
     // Mouse Events
     const onMouseMoveRightResize = (event) => {
-      const dx = (event.clientX - x)*(displayWidth/1400);
+      const dx = (event.clientX - x)*(1500/displayWidth);
       x = event.clientX;
       width = width + dx;
       if(width<0){
@@ -45,7 +45,7 @@ export default function ImageEffect({color,displayWidth}) {
     // Touch Events
 
     const onTouchMoveRightResize = (event) => {
-      const dx = (event.touches[0].clientX - x)*(displayWidth/120);
+      const dx = (event.touches[0].clientX - x)*(1500/displayWidth);
       x = event.touches[0].clientX;
       width = width + dx;
       if(width<0){
@@ -78,7 +78,7 @@ export default function ImageEffect({color,displayWidth}) {
   }, [displayWidth]);
 
   return (
-    <div className="ImageEffectContainer" draggable={false}>
+    <div id="ImageEffectContainer" draggable={false}>
         <div className="ImageEffect">
             <img src={image} alt="childImage" draggable={false} className="childImage"/>
             <div ref={ref} className="resizeable" style={{backgroundColor:`hsla(${color[0]},${color[1]}%,${color[2]}%,38%)`}}>

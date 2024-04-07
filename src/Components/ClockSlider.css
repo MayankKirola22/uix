@@ -10,6 +10,7 @@
     width: 100%;
     height: 100%;
     user-select: none;
+    -webkit-user-drag: none;
 }
 #ClockSlider .gradient{
     position: absolute;
@@ -37,6 +38,8 @@
 #ClockSlider .clockFrame{
     height: 140px;
     width: 140px;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 #ClockSlider .clock:active{
     bottom: 10px;

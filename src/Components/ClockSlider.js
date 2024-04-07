@@ -28,8 +28,9 @@ export default function ClockSlider({color,Height,displayWidth}){
         
         // Mouse Events
         const onMouseMoveHeightResize = (event) => {
-          const dy = (event.clientY - y)*(displayWidth/1400);
+          const dy = (event.clientY - y)*(1500/displayWidth);
           y = event.clientY;
+          let x= event.clientX;
           height = height + dy;
           if(height<0){
             height=0;
@@ -38,6 +39,13 @@ export default function ClockSlider({color,Height,displayWidth}){
             height=Height-238;
           }
           resizeableEle.style.height = `${height}px`;
+          const rect=selector.getBoundingClientRect();
+          if(x-20<rect.left*(displayWidth/1500) || x+20 > (rect.left+rect.width)*(displayWidth/1500)){
+            onMouseUpHeightResize();
+          }
+          if(y-20<rect.top*(displayWidth/1500) || y+20 > (rect.top+rect.height)*(displayWidth/1500)){
+            onMouseUpHeightResize();
+          }
         };
 
         const onMouseUpHeightResize = () => {
@@ -64,7 +72,7 @@ export default function ClockSlider({color,Height,displayWidth}){
         // Touch Events
 
         const onTouchMoveHeightResize = (event) => {
-          const dy = (event.touches[0].clientY - y)*(displayWidth/120);
+          const dy = (event.touches[0].clientY - y)*(1500/displayWidth);
           y = event.touches[0].clientY;
           height = height + dy;
           resizeableEle.style.height = `${height}px`;
