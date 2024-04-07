@@ -19,12 +19,10 @@ export default function ClockSlider({color,Height,displayHeight}){
         const styles = window.getComputedStyle(resizeableEle);
         let height = parseInt(styles.height, 10);
         let y = 0;
-
         if(height>(Height-238)){
           height=Height-238;
           resizeableEle.style.height = `${height}px`;
         }
-
         // Mouse Events
         
         const onMouseMoveHeightResize = (event) => {
@@ -34,25 +32,24 @@ export default function ClockSlider({color,Height,displayHeight}){
           resizeableEle.style.height = `${height}px`;
           if(height<0){
             height=0;
-            resizeableEle.style.height = `${height}px`;
           }
           if(height>(Height-238)){
             height=Height-238;
-            resizeableEle.style.height = `${height}px`;
           }
+          resizeableEle.style.height = `${height}px`;
         };
         const onMouseUpHeightResize = () => {
-
-          if(height>Height-350){
-            height=Height-238;
-            resizeableEle.style.transition="all 1s ease-in-out";
-            resizeableEle.style.height=`${height}px`
-          }
+          // if(height>Height-350){
+          //   height=Height-238;
+          //   resizeableEle.style.transition="all 1s ease-in-out";
+          //   resizeableEle.style.height=`${height}px`
+          // }
           if(height<100){
             height=0;
             resizeableEle.style.transition="all 1s ease-in-out";
             resizeableEle.style.height=`${height}px`
           }
+          console.log("up",height,Height);
           document.removeEventListener("mousemove", onMouseMoveHeightResize);
         };
         const onMouseDownHeightResize = (event) => {
@@ -81,11 +78,11 @@ export default function ClockSlider({color,Height,displayHeight}){
           }
         };
         const onTouchEndHeightResize = () => {
-          if(height>Height-350){
-            height=Height-238;
-            resizeableEle.style.transition="all 1s ease-in-out";
-            resizeableEle.style.height=`${height}px`
-          }
+          // if(height>Height-350){
+          //   height=Height-238;
+          //   resizeableEle.style.transition="all 1s ease-in-out";
+          //   resizeableEle.style.height=`${height}px`
+          // }
           if(height<100){
             height=0;
             resizeableEle.style.transition="all 1s ease-in-out";
@@ -100,12 +97,12 @@ export default function ClockSlider({color,Height,displayHeight}){
           resizeableEle.style.bottom = null;
           resizeableEle.style.transition="all 0s";
           document.addEventListener("touchmove", onTouchMoveHeightResize);
-          document.addEventListener("touchend", onTouchEndHeightResize);
+         document.addEventListener("touchend", onTouchEndHeightResize);
         };
     
         const resizerDown = refDown.current;
         resizerDown.addEventListener("mousedown", onMouseDownHeightResize);
-        resizerDown.addEventListener('touchstart',onTouchStartHeightResize);
+        resizerDown.addEventListener('touchstart',onTouchStartHeightResize);  
         return () => {
           resizerDown.removeEventListener("mousedown", onMouseDownHeightResize);
           resizerDown.removeEventListener('touchstart',onTouchStartHeightResize);

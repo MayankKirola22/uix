@@ -105,7 +105,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
 
     // Down Resize 
 
-    const onMouseMoveDownResize = (event) => {
+    const onMouseMoveHeightResize = (event) => {
         const dy = event.clientY - y;
         y = event.clientY;
         rd1Height = rd1Height + dy;
@@ -120,16 +120,16 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
           setRd1Height(rd1Height);
       };
   
-      const onMouseUpDownResize = () => {
-        document.removeEventListener("mousemove", onMouseMoveDownResize);
+      const onMouseUpHeightResize = () => {
+        document.removeEventListener("mousemove", onMouseMoveHeightResize);
       };
   
-      const onMouseDownDownResize = (event) => {
+      const onMouseDownHeightResize = (event) => {
         y = event.clientY;
         rd1.style.top = rd1Styles.top;
         rd1.style.bottom = null;
-        document.addEventListener("mousemove", onMouseMoveDownResize);
-        document.addEventListener("mouseup", onMouseUpDownResize);
+        document.addEventListener("mousemove", onMouseMoveHeightResize);
+        document.addEventListener("mouseup", onMouseUpHeightResize);
       };
 
     // Touch Events
@@ -213,6 +213,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
       };
   
       const onTouchEndHeightResize = () => {
+        
         document.removeEventListener("touchmove", onTouchMoveHeightResize);
       };
   
@@ -230,7 +231,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
 
     resizerV1.addEventListener("mousedown", onMouseDownRightResize1);
     resizerV2.addEventListener("mousedown", onMouseDownRightResize2);
-    resizerH1.addEventListener("mousedown", onMouseDownDownResize);
+    resizerH1.addEventListener("mousedown", onMouseDownHeightResize);
 
     resizerV1.addEventListener("touchstart", onTouchStartRightResize1);
     resizerV2.addEventListener("touchstart", onTouchStartRightResize2);
@@ -239,7 +240,7 @@ export default function Home({color,setColor,displayHeight,displayWidth}){
     return () => {
       resizerV1.removeEventListener("mousedown", onMouseDownRightResize1);
       resizerV2.removeEventListener("mousedown", onMouseDownRightResize2);
-      resizerH1.removeEventListener("mousedown", onMouseDownDownResize);
+      resizerH1.removeEventListener("mousedown", onMouseDownHeightResize);
 
       resizerV1.removeEventListener("touchstart", onTouchStartRightResize1);
       resizerV2.removeEventListener("touchstart", onTouchStartRightResize2);
