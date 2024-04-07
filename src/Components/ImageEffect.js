@@ -42,7 +42,7 @@ export default function ImageEffect({color,displayHeight}) {
       document.addEventListener("mousemove", onMouseMoveRightResize);
       document.addEventListener("mouseup", onMouseUpRightResize);
     };
-
+    
     // Touch Events
 
     const onTouchMoveRightResize = (event) => {
@@ -79,11 +79,10 @@ export default function ImageEffect({color,displayHeight}) {
   }, [displayHeight]);
 
   return (
-    <div className="ImageEffectContainer" draggable={false}>
+    <div className="ImageEffectContainer">
         <div className="ImageEffect">
             <img src={image} alt="childImage" draggable={false} className="childImage"/>
-            <div ref={ref} className="resizeable" style={{backgroundColor:`hsla(${color[0]},${color[1]}%,${color[2]}%,38%)`}}>
-            </div>
+            <div ref={ref} className="resizeable" style={{backgroundColor:`hsla(${color[0]},${color[1]}%,${color[2]}%,38%)`}}/>
         </div>
         <div ref={refRight} className="resizer resizer-r"><div className="resizerElement"/></div>
     </div>
