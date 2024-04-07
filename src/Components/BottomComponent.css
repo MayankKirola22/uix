@@ -139,5 +139,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
+@keyframes popOpen {
+    from {
+        right: -40%;
+        bottom: -40%;
+    }
+    50% {
+        right: 30%;
+        bottom: 30%;
+    }
+    to {
+        right: 20%;
+        bottom: 20%;
+    }
+  }

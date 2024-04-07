@@ -61,7 +61,7 @@ export default function BottomComponent({color,displayHeight}){
                     </div>
                 </div>
                 <div className="help" style={{backgroundColor:!helpOpen?`hsl(${color[0]},${color[1]}%,${color[2]}%)`:"black",opacity:popOpen?0:1,pointerEvents:popOpen?"none":'auto'}} onClick={()=>setHelpOpen(!helpOpen)}><img src={helpOpen?chatClosed:chatOpen} className="helpImg" alt="help"/></div>
-                <div className="helpFloat" style={helpOpen?{opacity:1,pointerEvents:'auto',right:'20%',bottom:'20%'}:{opacity:0,pointerEvents:'none',right:'-40%',bottom:'-40%'}}>
+                <div className="helpFloat" style={helpOpen?{opacity:1,pointerEvents:'auto',right:'20%',bottom:'20%',animation:"popOpen 0.5s ease"}:{opacity:0,pointerEvents:'none',right:'-40%',bottom:'-40%'}}>
                     <div style={{display:'flex',alignItems:"center"}}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_33_1421)">
