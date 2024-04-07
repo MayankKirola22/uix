@@ -49,7 +49,7 @@ export default function ClockSlider({color,Height,displayHeight}){
             resizeableEle.style.transition="all 1s ease-in-out";
             resizeableEle.style.height=`${height}px`
           }
-          console.log("up",height,Height);
+          //console.log("up",height,Height);
           document.removeEventListener("mousemove", onMouseMoveHeightResize);
         };
         const onMouseDownHeightResize = (event) => {
