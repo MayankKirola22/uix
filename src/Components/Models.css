@@ -63,6 +63,8 @@
 }
 #Models .modelInfo{
     width: 20%;
+    display: flex;
+    align-items: center;
 }
 #Models .modelInfo:nth-of-type(1){
     width: 25%;

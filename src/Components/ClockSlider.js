@@ -3,7 +3,7 @@ import clockBg from "../resources/clockBg.png";
 import arrowDown from "../resources/arrowDown.png";
 import { useEffect, useRef, useState } from "react";
 import clockFrame from "../resources/ClockFrame.png";
-export default function ClockSlider({color,Height}){
+export default function ClockSlider({color,Height,displayHeight}){
     const [time,setTime]=useState([0,0,0]);
     const [currTime,setCurrTime]=useState("")  
     const ref = useRef(null);
@@ -19,12 +19,11 @@ export default function ClockSlider({color,Height}){
         const styles = window.getComputedStyle(resizeableEle);
         let height = parseInt(styles.height, 10);
         let y = 0;
-        if(height>(Height-258)){
-          height=Height-258;
-          resizeableEle.style.height = `${height}px`;
-        }
-        // Right resize
-        const onMouseMoveRightResize = (event) => {
+
+        // Mouse Events
+        
+        const onMouseMoveHeightResize = (event) => {
+          console.log(event.clientY)
           const dy = event.clientY - y;
           y = event.clientY;
           height = height + dy;
@@ -37,30 +36,56 @@ export default function ClockSlider({color,Height}){
             height=Height-238;
             resizeableEle.style.height = `${height}px`;
           }
-          console.log(height)
         };
-    
-        const onMouseUpRightResize = () => {
-          document.removeEventListener("mousemove", onMouseMoveRightResize);
+        const onMouseUpHeightResize = () => {
+          document.removeEventListener("mousemove", onMouseMoveHeightResize);
         };
-    
-        const onMouseDownRightResize = (event) => {
+        const onMouseDownHeightResize = (event) => {
+          console.log(event);
           y = event.clientY;
           resizeableEle.style.top = styles.top;
           resizeableEle.style.bottom = null;
-          document.addEventListener("mousemove", onMouseMoveRightResize);
-          document.addEventListener("mouseup", onMouseUpRightResize);
+          document.addEventListener("mousemove", onMouseMoveHeightResize);
+          document.addEventListener("mouseup", onMouseUpHeightResize);
+        };
+
+        // Touch Events
+
+        const onTouchMoveHeightResize = (event) => {
+          const dy = (event.touches[0].clientY - y)*(displayHeight/200);
+          y = event.touches[0].clientY;
+          height = height + dy;
+          resizeableEle.style.height = `${height}px`;
+          if(height<0){
+            height=0;
+            resizeableEle.style.height = `${height}px`;
+          }
+          if(height>(Height-238)){
+            height=Height-238;
+            resizeableEle.style.height = `${height}px`;
+          }
+        };
+        const onTouchEndHeightResize = () => {
+          document.removeEventListener("touchmove", onTouchMoveHeightResize);
+        };
+        const onTouchStartHeightResize = (event) => {
+          event.preventDefault();
+          y = event.touches[0].clientY;
+          resizeableEle.style.top = styles.top;
+          resizeableEle.style.bottom = null;
+          document.addEventListener("touchmove", onTouchMoveHeightResize);
+          document.addEventListener("touchend", onTouchEndHeightResize);
         };
     
-        // Add mouse down event listener
         const resizerDown = refDown.current;
-        resizerDown.addEventListener("mousedown", onMouseDownRightResize);
-    
+        resizerDown.addEventListener("mousedown", onMouseDownHeightResize);
+        resizerDown.addEventListener('touchstart',onTouchStartHeightResize);
         return () => {
-          resizerDown.removeEventListener("mousedown", onMouseDownRightResize);
+          resizerDown.removeEventListener("mousedown", onMouseDownHeightResize);
+          resizerDown.removeEventListener('touchstart',onTouchStartHeightResize);
           clearInterval(timer);
         };
-      }, [Height]);
+      }, [Height,displayHeight]);
     return(
         <div className="ClockSlider">
             <img src={clockBg} draggable={false} alt="bg" className="clockbg"/>

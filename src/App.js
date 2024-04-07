@@ -35,7 +35,7 @@ function App() {
   ,[width,height])
   return (
     <div className="App" style={{backgroundColor:`hsl(${Color[0]},${Color[1]}%,${Color[2]}%)`}}ref={ref}>
-      <Home color={Color} setColor={setColor}/>
+      <Home color={Color} setColor={setColor} displayHeight={height} displayWidth={width}/>
     </div>
   );
 }

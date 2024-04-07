@@ -6,15 +6,19 @@
 .App {
   min-height: 100vh;
   min-width: 100vw;
-  -webkit-text-size-adjust: 30%;
   text-align: center;
   font-family: Inter;
   color:white;
 }
 
-@media screen and (min-width: 480px){
+
+@supports (-webkit-touch-callout: none) {
   .App{
-    -webkit-text-size-adjust: 50%;
+    -webkit-text-size-adjust: 30%;
+  }
+  @media screen and (min-width: 480px){
+    .App{
+      -webkit-text-size-adjust: 50%;
+    }
   }
 }
-

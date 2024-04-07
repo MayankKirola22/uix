@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import chatOpen from "../resources/chatOpen.png";
 import chatClosed from "../resources/chatClose.png";
 
-export default function BottomComponent({color}){
+export default function BottomComponent({color,displayHeight}){
     const [popChecks,setPopChecks]=useState([0,...Array(3).fill(false)]);
     const [popOpen,setPopOpen]=useState(false);
     const [helpOpen,setHelpOpen]=useState(false);
@@ -39,7 +39,7 @@ export default function BottomComponent({color}){
     },[color])
     return(
         <div id="BottomComponent">
-            <ImageEffect color={color}/>
+            <ImageEffect color={color} displayHeight={displayHeight}/>
             <Loading color={color}/>
             <div className="modelContainer">
                 <div className="model" onClick={()=>setPopOpen(!popOpen)}>

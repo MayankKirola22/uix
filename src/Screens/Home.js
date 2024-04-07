@@ -7,7 +7,7 @@ import Tasks from "../Components/Tasks";
 import Models from "../Components/Models";
 import BottomComponent from "../Components/BottomComponent";
 
-export default function Home({color,setColor}){
+export default function Home({color,setColor,displayHeight,displayWidth}){
     const refCd1 = useRef(null);
     const refCd2 = useRef(null);
     const refCd3 = useRef(null);
@@ -39,6 +39,9 @@ export default function Home({color,setColor}){
     cd3.style.width = `${cd3Width}px`;
     rd1.style.height = `${rd1Height}px`;
     rd2.style.height = "261px";
+
+    // Mouse Events
+
     // Right resize col - div 1 & col - div 2
     
     const onMouseMoveRightResize1 = (event) => {
@@ -129,7 +132,98 @@ export default function Home({color,setColor}){
         document.addEventListener("mouseup", onMouseUpDownResize);
       };
 
-    // Add mouse down event listener
+    // Touch Events
+
+    // Right resize col - div 1 & col - div 2
+
+    const onTouchMoveRightResize1 = (event) => {
+      const dx = (event.touches[0].clientX - x)*(displayHeight/200);
+      x = event.touches[0].clientX;
+      cd1Width = cd1Width + dx;
+      
+      if(cd1Width>400){
+        cd1Width=400;
+      }
+      if(cd1Width<300){
+        cd1Width=300;
+      }
+      cd1.style.width = `${cd1Width}px`;
+      cd2.style.width = `${1242 -cd1Width-cd3Width}px`
+      setCd1Width(cd1Width);
+    };
+
+    const onTouchEndRightResize1 = () => {
+      document.removeEventListener("touchmove", onTouchMoveRightResize1);
+    };
+
+    const onTouchStartRightResize1 = (event) => {
+      x = event.touches[0].clientX;
+      cd1.style.left = cd1Styles.left;
+      cd1.style.right = null;
+      document.addEventListener("touchmove", onTouchMoveRightResize1);
+      document.addEventListener("touchend", onTouchEndRightResize1);
+    };
+
+    // Right resize col - div 2 & col - div 3
+    
+    const onTouchMoveRightResize2 = (event) => {
+        const dx = (event.touches[0].clientX - x)*(displayHeight/200);
+        x = event.touches[0].clientX;
+        cd3Width = cd3Width - dx;
+          if(cd3Width<300){
+            cd3Width=300;
+            cd3.style.width = `${cd3Width}px`;
+          }
+          if(cd3Width>400){
+            cd3Width=400;
+            cd3.style.width = `${cd3Width}px`;
+          }
+          cd3.style.width = `${cd3Width}px`;
+          cd2.style.width = `${1242-cd3Width-cd1Width}px`
+          setCd3Width(cd3Width);
+      };
+  
+      const onTouchEndRightResize2 = () => {
+        document.removeEventListener("touchmove", onTouchMoveRightResize2);
+      };
+  
+      const onTouchStartRightResize2 = (event) => {
+        x = event.touches[0].clientX;
+        cd2.style.left = cd2Styles.left;
+        cd2.style.right = null;
+        document.addEventListener("touchmove", onTouchMoveRightResize2);
+        document.addEventListener("touchend", onTouchEndRightResize2);
+      };
+
+    // Down Resize 
+
+    const onTouchMoveHeightResize = (event) => {
+        const dy = (event.touches[0].clientY - y)*(displayHeight/200);
+        y = event.touches[0].clientY;
+        rd1Height = rd1Height + dy;
+          if(rd1Height<500){
+            rd1Height=500;
+          }
+          if(rd1Height>600){
+            rd1Height=600;
+          }
+          rd1.style.height = `${rd1Height}px`;
+          rd2.style.height = `${861-rd1Height}px`
+          setRd1Height(rd1Height);
+      };
+  
+      const onTouchEndHeightResize = () => {
+        document.removeEventListener("touchmove", onTouchMoveHeightResize);
+      };
+  
+      const onTouchStartHeightResize = (event) => {
+        y = event.touches[0].clientY;
+        rd1.style.top = rd1Styles.top;
+        rd1.style.bottom = null;
+        document.addEventListener("touchmove", onTouchMoveHeightResize);
+        document.addEventListener("touchend", onTouchEndHeightResize);
+      };
+
     const resizerV1 = refSplit1.current;
     const resizerV2 = refSplit2.current;
     const resizerH1 = refSplit3.current;
@@ -138,10 +232,18 @@ export default function Home({color,setColor}){
     resizerV2.addEventListener("mousedown", onMouseDownRightResize2);
     resizerH1.addEventListener("mousedown", onMouseDownDownResize);
 
+    resizerV1.addEventListener("touchstart", onTouchStartRightResize1);
+    resizerV2.addEventListener("touchstart", onTouchStartRightResize2);
+    resizerH1.addEventListener("touchstart", onTouchStartHeightResize);
+
     return () => {
       resizerV1.removeEventListener("mousedown", onMouseDownRightResize1);
       resizerV2.removeEventListener("mousedown", onMouseDownRightResize2);
       resizerH1.removeEventListener("mousedown", onMouseDownDownResize);
+
+      resizerV1.removeEventListener("touchstart", onTouchStartRightResize1);
+      resizerV2.removeEventListener("touchstart", onTouchStartRightResize2);
+      resizerH1.removeEventListener("touchstart", onTouchStartHeightResize);
     };
   }, []);
 
@@ -158,10 +260,10 @@ export default function Home({color,setColor}){
                     <div ref={refSplit1} className="verticalSpliterDiv spliterDiv" id='vsd1' style={{cursor:Cd1Width===300?"e-resize":Cd1Width===400?"w-resize":"ew-resize"}}><div className="spliterIcon"/></div>
                     <div id="cd2" ref={refCd2} className="colDiv innerDiv"><Models color={color}/></div>
                     <div ref={refSplit2} className="verticalSpliterDiv spliterDiv" id="vsd2" style={{cursor:Cd3Width===300?"w-resize":Cd3Width===400?"e-resize":"ew-resize"}}><div className="spliterIcon"/></div>
-                    <div id="cd2" ref={refCd3} className="colDiv innerDiv" ><ClockSlider color={color} Height={Rd1Height}/></div>
+                    <div id="cd3" ref={refCd3} className="colDiv innerDiv" ><ClockSlider displayHeight={displayHeight} color={color} Height={Rd1Height}/></div>
                 </div>
                 <div ref={refSplit3} className="horizontalSpliterDiv spliterDiv" id="hsd" style={{cursor:Rd1Height===500?"s-resize":Rd1Height===600?"n-resize":"ns-resize"}}><div className="spliterIcon"/></div>
-                <div ref={refRd2} id="rd2" className="rowDiv innerDiv" ><BottomComponent color={color}/></div>
+                <div ref={refRd2} id="rd2" className="rowDiv innerDiv" ><BottomComponent displayHeight={displayHeight} color={color}/></div>
             </div>
         </div>
     )

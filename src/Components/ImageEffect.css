@@ -1,6 +1,7 @@
 .ImageEffectContainer{
     position: relative;
     height: 160px;
+    touch-action: none;
 }
 .ImageEffect {
     border-radius: 5px;

@@ -1,9 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import image from "../resources/image.png";
-import resizer from "../resources/Resizer.png";
 import "./ImageEffect.css";
 
-export default function ImageEffect({color}) {
+export default function ImageEffect({color,displayHeight}) {
   const ref = useRef(null);
   const refRight = useRef(null);
 
@@ -16,7 +15,8 @@ export default function ImageEffect({color}) {
     resizerRight.style.left=`${width+43}px`;
     const styles = window.getComputedStyle(resizeableEle);
     
-    // Right resize
+    // Mouse Events
+
     const onMouseMoveRightResize = (event) => {
       const dx = event.clientX - x;
       x = event.clientX;
@@ -43,13 +43,40 @@ export default function ImageEffect({color}) {
       document.addEventListener("mouseup", onMouseUpRightResize);
     };
 
-    // Add mouse down event listener
-    resizerRight.addEventListener("mousedown", onMouseDownRightResize);
+    // Touch Events
 
+    const onTouchMoveRightResize = (event) => {
+      const dx = (event.touches[0].clientX - x)*(displayHeight/200);
+      x = event.touches[0].clientX;
+      width = width + dx;
+      if(width<0){
+        width=0;
+      }
+      if(width>498){
+        width=498;
+      }
+      resizeableEle.style.width = `${width}px`;
+      resizerRight.style.left=`${width+43}px`;
+    };
+    const onTouchEndRightResize = () => {
+      document.removeEventListener("touchmove", onTouchMoveRightResize);
+    };
+    const onTouchStartRightResize = (event) => {
+      event.preventDefault();
+      x = event.touches[0].clientX;
+      resizeableEle.style.top = styles.top;
+      resizeableEle.style.bottom = null;
+      document.addEventListener("touchmove", onTouchMoveRightResize);
+      document.addEventListener("touchend", onTouchEndRightResize);
+    };
+
+    resizerRight.addEventListener("mousedown", onMouseDownRightResize);
+    resizerRight.addEventListener("touchstart", onTouchStartRightResize);
     return () => {
       resizerRight.removeEventListener("mousedown", onMouseDownRightResize);
+      resizerRight.removeEventListener("touchstart", onTouchStartRightResize);
     };
-  }, []);
+  }, [displayHeight]);
 
   return (
     <div className="ImageEffectContainer" draggable={false}>
